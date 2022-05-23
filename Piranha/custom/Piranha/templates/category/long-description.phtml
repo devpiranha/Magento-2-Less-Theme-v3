@@ -1,0 +1,16 @@
+<?php
+    // Get Custom Category Atribute "Short Description"
+    $LongDesc = $block->getCurrentCategory()->getLongDescription();
+?>
+
+<?php if ($LongDesc) :?>
+
+    <div class="long-category-description">
+        <?= /* @noEscape */ $this->helper(Magento\Catalog\Helper\Output::class)->categoryAttribute(
+            $block->getCurrentCategory(),
+            $LongDesc,
+            'long_description'
+        ) ?>
+    </div>
+<?php endif; ?>
+

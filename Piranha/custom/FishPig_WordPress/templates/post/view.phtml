@@ -1,0 +1,188 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+// phpcs:ignoreFile -- long lines (todo)
+?>
+<?php if ($post = $block->getPost()): ?>
+    <?php if (!$post->isViewableForVisitor()): ?>
+        <?= $block->getPasswordProtectHtml() ?>
+    <?php else: ?>
+
+        <div class="container-fluid">
+            <div class="row" style="padding-top:80px;">
+                <div class="col-md-5 offset-md-1 content">
+
+               
+
+                <div class="post-date post-meta-item">
+                    <?= $block->escapeHtml($post->getPostDate()) ?>
+                </div>
+
+                <div class="blog-title">
+                    <h1><?= $block->escapeHtmlAttr($post->getName()) ?></h1>
+                </div>
+
+
+                <?php if (($content = trim($post->getContent())) !== ''): ?>
+                    <div class="post-content"><?= /* @noEscape */ $content ?></div>
+                <?php endif; ?>
+
+
+                <div class="share-block">
+                    <p><i class="fa fa-share-alt"></i> Share this article</p>
+                    <ul>
+                
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+
+                    </ul>
+                </div>
+
+                </div>
+                <div class="col-md-6">
+
+                <div class="inner-block">
+
+                <div class="post-gallery-slider">
+                    <ul>
+                 
+                        <?php
+
+                        $sliderblocks = $post->getMetaValue('additonal_images');
+                        if($sliderblocks):
+                            foreach ($sliderblocks as $sliderblock) { 
+
+                            $images = array($sliderblock['image']);?>
+                                    
+                            <?php foreach($images as $image) { ?>
+                                <li>
+                                    <img src="<?php echo $image;?>" />
+                                </li>
+                            <?php } ?>
+                                                        
+                        <?php }
+                        else : ?>
+
+                        <?php endif;?>
+
+                    </ul>
+                </div>
+
+                <div class="post-gallery-slider-nav">
+                            
+                <ul>
+                    
+            
+
+                        <?php
+
+                        $sliderblocks = $post->getMetaValue('additonal_images');
+                        if($sliderblocks):
+                            foreach ($sliderblocks as $sliderblock) { 
+
+                            $images = array($sliderblock['image']);?>
+                                    
+                            <?php foreach($images as $image) { ?>
+                                <li>
+                                    <img src="<?php echo $image;?>" />
+                                </li>
+                            <?php } ?>
+                                                        
+                        <?php }
+                        else : ?>
+
+                        <?php endif;?>
+
+                    </ul>
+                </div>
+
+
+                <div class="under-image-bar">
+                    <h5>Find out more</h5>
+                    <p>For more information about our products and services contact the Barons team today on </br><a href="tel:01253 741940">01253 741940</a> or complete and enquiry form.</p>
+                </div>
+
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="post-view jd">
+            <div class="post-entry">
+               
+               
+            </div>
+            <div class="post-meta">
+         
+              
+                
+   
+              
+            </div>
+            <?= /* @noEscape */ $block->getChildHtml('comments') ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+
+
+<div class="blog-feed" style="padding-top: 30px; padding-bottom: 80px;">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col">
+                <h4 class="title">More News from Barons</h4>
+            </div>
+        </div>
+
+        <div class="row">
+                <?php
+
+        // https://fishpig.co.uk/magento/wordpress-integration/code-examples/
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+        $posts = $objectManager->create('\FishPig\WordPress\Model\ResourceModel\Post\Collection')
+                    ->addPostTypeFilter('post')
+                    ->setOrderByPostDate()
+                    ->addIsViewableFilter()
+                    ->setPageSize(4)
+                    ->load();
+
+
+        if (count($posts) > 0) {
+            foreach($posts as $post) { ?>
+            <div class="col-md-3 bPost <?php echo $post->getId(); ?> <?php echo $post->getPostType(); ?>">
+
+
+            <?php if ($image = $post->getImage()): ?>
+					        <?php $imageUrl = $image->getResizer() ? $image->getResizer()->constrainOnly(false)->keepFrame(false)->keepAspectRatio(true)->resize(600, 600) : '' ?>
+								<div class="postImg">
+									<a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>"><div class="bg-image" style="background-image:url('<?php echo $imageUrl ?>');"></div></a>
+								</div>
+							<?php endif; ?>
+
+               
+
+                <div class="content-area">
+                    <h5><a href="<?php echo $post->getUrl(); ?>"><?php echo $post->getName(); ?></a></h5>
+                    <div class="postCont">
+                        <!-- Tags / Date -->
+                        <div class="postInfo">
+                            <span class="post-date"><?php echo $post->getPostDate("jS M Y"); ?></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <?php 
+            }
+        }
+        ?>
+        </div>
+    </div>
+</div>

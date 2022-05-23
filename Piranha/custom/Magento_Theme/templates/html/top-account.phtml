@@ -1,0 +1,32 @@
+<div class="block headLink account-wrapper">
+
+<!-- <a class="account-menu" href="<?php echo $this->getBaseUrl(); ?>customer/account/">
+        <span class="account qty empty">
+            <span class="account-lable hide-on-med-and-down"> <?php
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $customerSession = $objectManager->create('Magento\Customer\Model\Session');
+
+            if ($customerSession->isLoggedIn()) {
+                echo "<h6>" . $customerSession->getCustomer()->getName() ."</h6>";  // get  Full Name
+          } else { 
+            ?>
+            <h6><i class="far fa-user"></i></h6>
+        <?php }; ?>
+            </span>
+        </span>
+    </a> -->
+
+    <a class="account-menu" href="tel:">
+    <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <a class="account-menu" href="tel:">
+        <i class="fas fa-envelope"></i>
+    </a>
+
+
+
+
+    <?php echo $this->getChildHtml('wishlist') ?>
+
+</div>

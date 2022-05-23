@@ -1,0 +1,52 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+// phpcs:ignoreFile -- long lines (todo)
+?>
+<?php if ($post = $block->getPost()): ?>
+    <?php if (!$post->isViewableForVisitor()): ?>
+        <?= $block->getPasswordProtectHtml() ?>
+    <?php else: ?>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 offset-md-1 content">
+
+                    <div class="blog-title">
+                        <h1><?= $block->escapeHtmlAttr($post->getName()) ?></h1>
+                    </div>
+
+                    <p class="key"><?php echo $post->getMetaValue('contract'); ?></p>
+                    <p class="key"><?php echo $post->getMetaValue('salary'); ?> PER ANNUM</p>
+
+                    <?php if (($content = trim($post->getContent())) !== ''): ?>
+                        <div class="post-content"><?= /* @noEscape */ $content ?></div>
+                    <?php endif; ?>
+
+                    <div class="share-block">
+                        <p><i class="fa fa-share-alt"></i> Share this Advert</p>
+                        <ul>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="general-form">
+                        <h4>Apply Now</h4>
+                        <?php echo $post->getMetaValue('form'); ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <?php endif; ?>
+  
+<?php endif; ?>

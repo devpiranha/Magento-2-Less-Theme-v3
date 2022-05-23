@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+      <!-- To add css/js from external resources -->
+      <css src="css/bootstrap-grid.css"/>
+            
+
+      <css src="css/zoneslick.min.css"/>
+      <!-- <css src="https://use.fontawesome.com/releases/v5.7.1/css/all.css" src_type="url"/> -->
+
+
+
+
+<css src="https://pro.fontawesome.com/releases/v5.15.4/css/solid.css" src_type="url"/>
+<css src="https://pro.fontawesome.com/releases/v5.15.4/css/regular.css" src_type="url"/>
+<css src="https://pro.fontawesome.com/releases/v5.15.4/css/light.css" src_type="url"/>
+<css src="https://pro.fontawesome.com/releases/v5.15.4/css/fontawesome.css" src_type="url"/>
+<css src="https://pro.fontawesome.com/releases/v5.15.4/css/brands.css" src_type="url"/>
+
+
+
+
+
+	  		<css src="https://use.typekit.net/hgw2rvg.css" src_type="url"/>
+		<css src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" src_type="url" />
+
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" src_type="url"/>
+      <link src="js/scripts.js"/>
+	  
+      <link src="js/custom-slider.js"/>
+
+
+
+
+
+
+    </head>
+</page>

@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header">
+            <arguments>
+                <argument name="show_part" xsi:type="string">other</argument>
+            </arguments>
+
+            <referenceBlock name="logo">
+                <arguments>
+                    <argument name="logo_file" xsi:type="string">images/logo.png</argument>
+                    <argument name="logo_width" xsi:type="number">275</argument>
+                </arguments>
+            </referenceBlock>
+
+        </referenceBlock>
+
+        <referenceBlock name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" name="header.fulltopbar.update" template="Piranha::header/fulltopbar.phtml" />
+        </referenceBlock>
+
+        <referenceContainer name="header-wrapper">
+
+
+            <block class="Magento\Framework\View\Element\Template" name="navigation.sections" after="logo" template="Magento_Theme::html/sections.phtml">
+                <arguments>
+                    <argument name="group_name" xsi:type="string">navigation-sections</argument>
+                    <argument name="group_css" xsi:type="string">nav-sections</argument>
+                </arguments>
+                <block class="Magento\Framework\View\Element\Template" name="store.menu" group="navigation-sections" template="Magento_Theme::html/container.phtml">
+                    <arguments>
+                        <argument name="title" translate="true" xsi:type="string">Menu</argument>
+                    </arguments>
+                    <block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="Magento_Theme::html/topmenu.phtml" ttl="3600" before="-"/>
+                </block>
+                <block class="Magento\Framework\View\Element\Text" name="store.links" group="navigation-sections">
+                    <arguments>
+                        <argument name="title" translate="true" xsi:type="string">Account</argument>
+                        <argument name="use_force" xsi:type="boolean">true</argument>
+                        <argument name="text" xsi:type="string"><![CDATA[<!-- Account links -->]]></argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template" name="store.settings" group="navigation-sections" template="Magento_Theme::html/container.phtml">
+                    <arguments>
+                        <argument name="title" translate="true" xsi:type="string">Settings</argument>
+                    </arguments>
+                    <block class="Magento\Store\Block\Switcher" name="store.settings.language" template="Magento_Store::switch/languages.phtml">
+                        <arguments>
+                            <argument name="id_modifier" xsi:type="string">nav</argument>
+                            <argument name="view_model" xsi:type="object">Magento\Store\ViewModel\SwitcherUrlProvider</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Directory\Block\Currency" name="store.settings.currency" template="Magento_Directory::currency.phtml">
+                        <arguments>
+                            <argument name="id_modifier" xsi:type="string">nav</argument>
+                        </arguments>
+                    </block>
+                </block>
+            </block>
+
+            <container name="op.search" label="Page Header Search" htmlTag="div" htmlClass="searchWrap">
+
+            </container>
+
+            <container htmlTag="div" htmlClass="account-container" after="top.search">
+                <block class="Magento\Framework\View\Element\Template" name="top.wishlist" template="Magento_Theme::html/top-wishlist.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="top.account" template="Magento_Theme::html/top-account.phtml"/>
+            </container>
+        </referenceContainer>
+
+
+
+
+
+
+
+
+
+        
+        
+         <referenceContainer name="footer">
+
+
+            <container name="footer-wrap2" htmlTag="div" htmlClass="foote-block">
+                <container name="footer-inner2" htmlTag="div" htmlClass="row">
+                    <container name="footer-row5" htmlTag="div" htmlClass="col-sm-12">
+                        <block class="Magento\Cms\Block\Block" name="footer.contact">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">footer-block</argument>
+                            </arguments>
+                        </block>    
+                    </container>
+                </container>
+            </container>
+
+            <container name="footer-bottom-wrap" htmlTag="div" htmlClass="footer-wrap grey">
+                <container name="footer-bottom" htmlTag="div" htmlClass="inner row">
+                    <container name="footer-bottomrow" htmlTag="div" htmlClass="col-sm-12">
+                        <block class="Magento\Cms\Block\Block" name="footer.bottomblock">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">footer-bottom</argument>
+                            </arguments>
+                        </block>    
+                    </container>
+                </container>
+            </container>
+
+
+
+            
+
+        </referenceContainer>
+
+        
+
+        <referenceBlock name="form.subscribe" remove="true"/>
+
+        <referenceBlock name="top.links" remove="true" />
+        <referenceBlock name="minicart" remove="true" />
+
+         <referenceBlock name="copyright" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="store.settings" remove="true"/>
+
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="advanced-search-link" remove="true"/>
+
+
+
+    </body>
+</page>

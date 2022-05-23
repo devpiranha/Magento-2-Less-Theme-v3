@@ -1,0 +1,85 @@
+<?php
+
+
+
+
+
+$attribute_string = array("White","Natural","Vanilla","Ivory","Sand Beech","Natural Oak","Greige Oak","Pistachio","Swiss Elm","Lissa Oak","Light Oak","Mountain Oak","Truffle Oak","Medium Oak","Santana Oak","Wenge","Dark Royal Oak","French Walnut","Opera Walnut","Dark Walnut","Oyster Urban Oak","Lava Oak","Alby Blue","Stone Grey",);
+
+if (in_array("White", $attribute_string)) {
+    echo "</br>White Image";
+}
+if (in_array("Natural", $attribute_string)) {
+    echo "</br>Natural Image";
+}
+if (in_array("Vanilla", $attribute_string)) {
+    echo "</br>Vanilla Image";
+}
+if (in_array("Ivory", $attribute_string)) {
+    echo "</br>Ivory Image";
+}
+if (in_array("Sand Beech", $attribute_string)) {
+    echo "</br>Sand Beech Image";
+}
+if (in_array("Natural Oak", $attribute_string)) {
+    echo "</br>Natural Oak Image";
+}
+if (in_array("Greige Oak", $attribute_string)) {
+    echo "</br>Greige Oak Image";
+}
+if (in_array("Pistachio", $attribute_string)) {
+    echo "</br>Pistachio Image";
+}
+if (in_array("Swiss Elm", $attribute_string)) {
+    echo "</br>Swiss Elm Image";
+}
+if (in_array("Lissa Oak", $attribute_string)) {
+    echo "</br>Lissa Oak Image";
+}
+if (in_array("Light Oak", $attribute_string)) {
+    echo "</br>Light Oak Image";
+}
+if (in_array("Mountain Oak", $attribute_string)) {
+    echo "</br>Mountain Oak Image";
+}
+if (in_array("Truffle Oak", $attribute_string)) {
+    echo "</br>Truffle Oak Image";
+}
+if (in_array("Santana Oak", $attribute_string)) {
+    echo "</br>Santana Oak Image";
+}
+if (in_array("Wenge", $attribute_string)) {
+    echo "</br>Wenge Image";
+}
+if (in_array("Dark Royal Oak", $attribute_string)) {
+    echo "</br>Dark Royal Oak Image";
+}
+if (in_array("French Walnut", $attribute_string)) {
+    echo "</br>French Walnut Image";
+}
+if (in_array("Opera Walnut", $attribute_string)) {
+    echo "</br>Opera Walnut Image";
+}
+if (in_array("Dark Walnut", $attribute_string)) {
+    echo "</br>Dark Walnut Image";
+}
+if (in_array("Oyster Urban Oak", $attribute_string)) {
+    echo "</br>Oyster Urban Oak Image";
+}
+if (in_array("Lava Oak", $attribute_string)) {
+    echo "</br>Lava Oak Image";
+}
+if (in_array("Alby Blue", $attribute_string)) {
+    echo "</br>Alby Blue Image";
+}
+if (in_array("Stone Grey", $attribute_string)) {
+    echo "</br>Stone Grey Image";
+}
+
+
+
+
+
+
+?>
+

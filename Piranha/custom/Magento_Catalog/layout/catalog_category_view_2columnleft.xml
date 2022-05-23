@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="columns">
+            <!--  Side bar -->
+            <container name="div.sidebar.additional" htmlTag="div" htmlClass="sidebar sidebar-additional" before="-">
+
+                <container name="sidebar.additional" as="sidebar_additional" label="Sidebar Additional"  htmlTag="div" htmlClass="sidebarinner">
+
+                    <!-- Add List ALL Categories block -->
+                    <!-- <block class="Piranha\DisplayCategories\Block\Menu" name="main.store.menu" template="Piranha_DisplayCategories::side-nav/full-side-categories.phtml" before="-"/> -->
+                    
+                    <!--  Recently Added -->
+                    <block class="Magento\Catalog\Block\Widget\RecentlyViewed" name="recently_viewed" template="Magento_Catalog::product/widget/viewed/grid.phtml" after="related.wrap">
+                        <arguments>
+                            <argument name="uiComponent" xsi:type="string">widget_recently_viewed</argument>
+                            <argument name="page_size" xsi:type="number">4</argument>
+                            <!-- 'Product attributes to show' configuration -->
+                            <argument name="show_attributes" xsi:type="string">name,image,price,learn_more</argument>
+                            <!-- 'Buttons to show' configuration -->
+                            <argument name="show_buttons" xsi:type="string">add_to_cart,add_to_compare,add_to_wishlist</argument>
+                        </arguments>
+                    </block>
+
+                </container>
+            </container>
+        </referenceContainer>
+  </body>
+</page>

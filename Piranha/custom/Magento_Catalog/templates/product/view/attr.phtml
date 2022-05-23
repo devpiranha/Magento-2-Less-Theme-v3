@@ -1,0 +1,419 @@
+
+<?php 
+
+
+$_product = $block->getProduct();
+
+
+if (null !== $_product->getCustomAttribute('height')) {
+    $Height = $_product->getCustomAttribute('height')->getValue();
+ }else{
+    $Height = "blank";
+ };
+
+ if (null !== $_product->getCustomAttribute('width')) {
+    $Width = $_product->getCustomAttribute('width')->getValue();
+ }else{
+    $Width = "blank";
+ };
+
+ if (null !== $_product->getCustomAttribute('diameter')) {
+    $Diameter = $_product->getCustomAttribute('diameter')->getValue();
+ }else{
+    $Diameter = "blank";
+ };
+
+ if (null !== $_product->getCustomAttribute('seat_height')) {
+    $SeatHeight = $_product->getCustomAttribute('seat_height')->getValue();
+ }else{
+    $SeatHeight = "blank";
+ };
+
+ if (null !== $_product->getCustomAttribute('material_options')) {
+    $Material = $_product->getCustomAttribute('material_options')->getValue();
+ }else{
+    $Material = "blank";
+ };
+
+
+ if (null !== $_product->getCustomAttribute('seating_options')) {
+    $SeatingOptions = $_product->getCustomAttribute('seating_options')->getValue();
+ }else{
+    $SeatingOptions = "blank";
+ };
+
+ if (null !== $_product->getCustomAttribute('customisable_features')) {
+    $CustomFeatures = $_product->getCustomAttribute('customisable_features')->getValue();
+ }else{
+    $CustomFeatures = "blank";
+ };
+ 
+
+ if (null !== $_product->getCustomAttribute('accessories')) {
+    $Accessories = $_product->getCustomAttribute('accessories')->getValue();
+ }else{
+    $Accessories = "blank";
+ };
+
+ if (null !== $_product->getCustomAttribute('accessories')) {
+    $Accessories = $_product->getCustomAttribute('accessories')->getValue();
+ }else{
+    $Accessories = "blank";
+ };
+
+ if (null !== $_product->getCustomAttribute('key_features')) {
+    $KeyFeatures = $_product->getCustomAttribute('key_features')->getValue();
+ }else{
+    $KeyFeatures = "blank";
+ };
+
+
+ if (null !== $_product->getCustomAttribute('other_options')) {
+    $OtherOptions = $_product->getCustomAttribute('other_options')->getValue();
+ }else{
+    $OtherOptions = "blank";
+ };
+
+
+
+?>
+
+
+<div id="accordion" class="attr-block">
+
+  <?php if (($Height != "blank") || ($Width != "blank") || ($Diameter != "blank") || ($SeatHeight != "blank")) { ?>
+   <div class="card">
+      <div class="card-header" id="headingOne">
+         <h5 class="mb-0">
+         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+               Dimensions <span>></span>
+         </button>
+         </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+         <div class="card-body">
+            <ul>
+               <?php if ($Height != "blank"): ?> <li> Height: <?php echo $Height; ?>mm </li><?php endif; ?>
+               <?php if ($Width != "blank"): ?> <li> Width: <?php echo $Width; ?>mm </li><?php endif; ?>
+               <?php if ($Diameter != "blank"): ?> <li> Diameter: <?php echo $Diameter; ?>mm </li><?php endif; ?>
+               <?php if ($SeatHeight != "blank"): ?> <li> Seat Height: <?php echo $SeatHeight; ?>mm </li><?php endif; ?>
+            </ul>
+         </div>
+      </div>
+   </div>
+  <?php } ?>
+
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Product Details <span>></span>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+            
+         <?php if ($Material != "blank"): ?> Material: <?php echo $Material; ?> <?php endif; ?></br>
+         <?php if ($SeatingOptions != "blank"):?> Seating Options: <?php echo $SeatingOptions;  ?> <?php endif; ?></br>
+         <?php if ($CustomFeatures != "blank"):?> Custom Features: <?php echo $CustomFeatures;  ?> <?php endif; ?></br>
+         <?php if ($Accessories != "blank"):?> Accessories: <?php echo $Accessories;  ?> <?php endif; ?></br>
+         <?php if ($KeyFeatures != "blank"):?> Key Features: <?php echo $KeyFeatures; ?> <?php endif; ?></br>
+
+      </div>
+    </div>
+  </div>
+
+  <?php 
+  $woodShades =$_product->getData('wood_shades');
+  $woodArray = explode(',',$woodShades); ?>
+
+ <?php if ($woodShades) { ?>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          Wood Shades <span>></span>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+
+      <ul class="woodshades">
+
+      <?php 
+            foreach($woodArray as $value):     
+                $attr = $_product->getResource()->getAttribute('wood_shades'); 
+      ?>
+
+      <?php
+        if ($attr->usesSource()): ?>
+           
+            <?php 
+                $option_value = $attr->getSource()->getOptionText($value);
+
+                switch ($option_value) {
+                    case "White":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/white.png');
+                        break;
+
+                     case "Natural":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/natural.png');
+                        break;
+                     
+                     case "Vanilla":
+                           $imgUrl = $block->getViewFileUrl('images/wood_shades/vanilla.png');
+                           break;
+                     
+                     case "Ivory":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/ivory.png');
+                        break;
+                     
+                     case "Sand Beech":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/sand_beech.png');
+                        break;
+
+                     case "Natural Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/natural_oak.png');
+                        break;
+
+                     case "Greige Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/greige_oak.png');
+                        break;
+
+                     case "Pistachio":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/pistachio.png');
+                        break;
+
+                     case "Swiss Elm":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/swiss_elm.png');
+                        break;
+
+                     case "Lissa Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/lissa_oak.png');
+                        break;
+
+                     case "Light Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/light_oak.png');
+                        break;
+
+                     case "Mountain Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/mountain_oak.png');
+                        break;
+
+                     case "Truffle Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/truffle_oak.png');
+                        break;
+
+                     case "Medium Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/medium_oak.png');
+                        break;
+
+                     case "Santana Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/santana_oak.png');
+                        break;
+
+                     case "Wenge":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/wenge.png');
+                        break;
+
+                     case "Dark Royal Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/dark_royalOak.png');
+                        break;
+
+                     case "French Walnut":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/french_walnut.png');
+                        break;
+
+                     case "Opera Walnut":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/opera_walnut.png');
+                        break;
+
+                     case "Dark Walnut":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/dark_walnut.png');
+                        break;
+   
+                     case "Oyster Urban Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/oyster_urban_oak.png');
+                        break;
+
+                     case "Lava Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/lava_oak.png');
+                        break;
+
+                     case "Alby Blue":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/alby_blue.png');
+                        break;
+
+                     case "Stone Grey":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/stone_grey.png');
+                        break;
+                        case "Mussel":
+                           $imgUrl = $block->getViewFileUrl('images/wood_shades/mussel.png');
+                           break;
+
+                           case "Cashmere":
+                              $imgUrl = $block->getViewFileUrl('images/wood_shades/cashmere.png');
+                              break;
+
+
+
+
+
+
+                    default:
+                        $imgUrl = "";
+                    // Repaat for each possible wood shade
+                }
+            ?>
+
+
+            <li><img src="<?php echo $imgUrl; ?>" alt="<?php echo $option_value; ?>" class="<?php echo $option_value; ?>" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<span class='titletop'><?php echo $option_value; ?></span>"</li>
+            
+          
+        <?php endif; ?>
+     
+    <?php endforeach; ?>
+
+    </ul>   
+
+    <?php 
+       //var_dump($data);
+    ?>
+
+
+
+
+   </div>
+    </div>
+  </div>
+  <?php } ?>
+
+
+
+  <?php 
+  $doorShades =$_product->getData('contrasting_door_drawer');
+  $doorArray = explode(',',$doorShades); ?>
+
+ <?php if ($doorShades) { ?>
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Contrasting Door/Drawer Shades <span>></span>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+      <div class="card-body">
+
+      <ul class="woodshades">
+
+      <?php 
+            foreach($doorArray as $value):     
+                $attr = $_product->getResource()->getAttribute('contrasting_door_drawer'); 
+      ?>
+
+      <?php
+        if ($attr->usesSource()): ?>
+           
+            <?php 
+                $option_value = $attr->getSource()->getOptionText($value);
+
+                switch ($option_value) {
+
+                     case "Light Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/light_oak.png');
+                        break;
+
+                     case "Stone Grey":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/stone_grey.png');
+                        break;
+
+                     case "Mountain Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/mountain_oak.png');
+                        break;
+
+                     case "Alby Blue":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/alby_blue.png');
+                        break;
+
+                     case "Lava Oak":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/lava_oak.png');
+                        break;
+
+                     case "White":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/white.png');
+                        break;
+
+                     case "Ivory":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/ivory.png');
+                        break;
+   
+                     case "Vanilla":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/vanilla.png');
+                        break;
+
+                     case "Cream":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/cream.png');
+                        break;
+
+                     case "Mussel":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/mussel.png');
+                        break;
+
+                     case "Cashmere":
+                        $imgUrl = $block->getViewFileUrl('images/wood_shades/cashmere.png');
+                        break;
+      
+                    default:
+                        $imgUrl = "";
+                    // Repaat for each possible wood shade
+                }
+            ?>
+
+
+            <li><img src="<?php echo $imgUrl; ?>" alt="<?php echo $option_value; ?>" class="<?php echo $option_value; ?>" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<span class='titletop'><?php echo $option_value; ?></span>"</li>
+            
+          
+        <?php endif; ?>
+     
+    <?php endforeach; ?>
+
+    </ul>   
+
+    <?php 
+       //var_dump($data);
+    ?>
+
+
+
+
+   </div>
+    </div>
+  </div>
+  <?php } ?>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+</div>
+
+
+
+

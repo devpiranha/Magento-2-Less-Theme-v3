@@ -1,0 +1,107 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menuHtml = $block->getHtml('level-top', 'submenu', $columnsLimit)
+?>
+
+<!-- <nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= /* @noEscape */ $_menuHtml?>
+        <?= $block->getChildHtml() ?>
+    </ul>
+</nav> -->
+
+
+
+<nav class="navbar navbar-expand-xl navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= /* @noEscape */ $_menuHtml?>
+        <?= $block->getChildHtml() ?>
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/display-van/">Display Van</a>
+          <a class="dropdown-item" href="/showroom/">Showroom</a>
+          <!-- <a class="dropdown-item" href="/samples/">Samples</a> -->
+          <!-- <a class="dropdown-item" href="/customer-service-after-sales/">Customer Service & After Sales</a> -->
+          <a class="dropdown-item" href="/furniture-leasing/">Furniture Leasing</a>
+          <a class="dropdown-item" href="/pub/documents/Barons_DualFabricLeaflet.pdf" target="_blank">Dual Fabric Options</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Resources
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- <a class="dropdown-item" href="/faq/">FAQs</a> -->
+          <a class="dropdown-item" href="/brochures/">Brochures</a>
+          <a class="dropdown-item" href="/info-guides/">Info Guides</a>
+          <!-- <a class="dropdown-item" href="/how-to-order/">How To Order</a> -->
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sectors
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/sector/care-home-hospices/">Care Home & Hospices</a>
+          <a class="dropdown-item" href="/sector/nhs/">NHS</a>
+          <a class="dropdown-item" href="/sector/senior-living/">Senior Living</a>
+          <!-- <a class="dropdown-item" href="/sector/challenging-environments/">Challenging Environments</a> -->
+          <!-- <a class="dropdown-item" href="/sector/local-authority-public-sector/">Local Authority / Public Sector</a>
+          <a class="dropdown-item" href="/sector/education/">Education</a>
+          <a class="dropdown-item" href="/sector/facilities-management/">Facilities Management</a> -->
+        </div>
+      </li>
+
+        <li><a href="/casestudies/">Case Studies</a></li>
+
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/about/" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+        About
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- <a class="dropdown-item" href="/about/history/">History</a> -->
+          <!-- <a class="dropdown-item" href="/about/british-made/">British Made</a> -->
+          <a class="dropdown-item" href="/about/meet-the-team/">Our Team</a>
+          <!-- <a class="dropdown-item" href="/about/sustainability/">Sustainability</a> -->
+          <a class="dropdown-item" href="/about/refurbishments-new-builds/">Refurbishments & New Builds</a>
+          <a class="dropdown-item" href="/about/product-development/">Product Development</a>
+          <a class="dropdown-item" href="/about/quality/">Quality</a>
+          <a class="dropdown-item" href="/careers/">Careers</a>
+
+        </div>
+      </li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/contact-us">Contact</a></li>
+
+
+ 
+
+    </ul>  
+
+
+    </ul>
+   
+  </div>
+</nav>

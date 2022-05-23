@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="1column">
+	<body>
+		<referenceContainer name="content" htmlClass="fluid" htmlTag="div">
+
+
+
+        <block class="Magento\Framework\View\Element\Template" name="blogtitle"  template="Piranha::blog/title.phtml" before="-"/>
+
+
+
+
+
+
+			<block class="FishPig\WordPress\Block\PostType\View" name="wp.postlist.wrapper" template="FishPig_WordPress::post/list/wrapper.phtml">
+				<block class="FishPig\WordPress\Block\Post\ListPost" name="wp.post.list" template="FishPig_WordPress::post/list.phtml">
+					<block class="FishPig\WordPress\Block\Post\PostList\Pager" name="wp.post_list.pager" as="pager"/>
+				</block>
+			</block>
+		</referenceContainer>
+
+
+        <referenceBlock name="page.main.title" remove="true" />
+		<referenceBlock name="breadcrumbs" remove="true" />
+
+
+	</body>
+</page>

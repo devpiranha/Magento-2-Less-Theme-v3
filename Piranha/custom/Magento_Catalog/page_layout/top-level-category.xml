@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+   <update handle="empty"/>
+
+    <referenceContainer name="page.wrapper">
+
+        	<!--  Default Blocks -->
+        <container name="header.container" as="header_container" label="Page Header Container" htmlTag="header" htmlClass="page-header" before="main.content"/>
+        <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+        <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer"/>
+
+
+        <container name="description.wrap" before="-">
+            <!--  add short description block -->
+            <block class="Magento\Catalog\Block\Category\View" name="category.short.description" template="Magento_Catalog::category/short-description.phtml">
+                    <arguments>
+                        <argument name="image" xsi:type="object">Magento\Catalog\ViewModel\Category\Image</argument>
+                        <argument name="output" xsi:type="object">Magento\Catalog\ViewModel\Category\Output</argument>
+                    </arguments>
+            </block>
+        </container>
+
+        <referenceContainer name="content">
+	    	<!-- Show Sub Categories | CUSTOM BLOCK -->
+            <block as="category_childcategorylist" class="Piranha\ChildCategoryList\Block\Category\ChildCategoryList" name="category.childcategorylist" template="Piranha_ChildCategoryList::childcategorylist.phtml"/>
+        
+            <!-- Long Description  -->
+            <block class="Magento\Catalog\Block\Category\View" name="category.long.description" template="Piranha::category/long-description.phtml" after="-" />
+
+        </referenceContainer>
+    </referenceContainer>
+
+    <referenceBlock name="category.image" remove="true" />
+</layout>
+

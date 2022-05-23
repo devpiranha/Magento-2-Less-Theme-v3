@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+
+        <!-- Title block + breadcrumbs -->
+        <container name="top.wrap" htmlTag="div" htmlClass="top-wrap" before="main.content">
+		<container name="breadcrumb.content" htmlTag="div" htmlClass="breadcrumb-content" before="title.content" />
+        	<container name="title.content" htmlTag="div" htmlClass="title-content" before="-" />
+        </container>
+
+        <referenceContainer name="content">
+
+            <!-- <block as="category_childcategorylist" class="Piranha\ChildCategoryList\Block\Category\ChildCategoryList" name="category.childcategorylist" template="Piranha_ChildCategoryList::childcategorylist.phtml"/> -->
+
+        	<!-- Wrap category description and category image -->
+	    	<container name="description.wrap" before="-">
+	    		<!--  add short description block -->
+                <block class="Magento\Catalog\Block\Category\View" name="category.short.description" template="Magento_Catalog::category/short-description.phtml">
+                	 <arguments>
+                        <argument name="image" xsi:type="object">Magento\Catalog\ViewModel\Category\Image</argument>
+                        <argument name="output" xsi:type="object">Magento\Catalog\ViewModel\Category\Output</argument>
+                    </arguments>
+                </block>
+	    	</container>
+
+     		<!-- Long Description  -->
+            <block class="Magento\Catalog\Block\Category\View" name="category.long.description" template="Piranha::category/long-description.phtml" after="-" />
+			<block class="Magento\Framework\View\Element\Template" name="cta.bar2"  template="Piranha::general/cta.phtml" after="-"/>
+
+	    </referenceContainer>
+
+        <!--  Description END -->
+        <container name="end.description" htmlTag="div" htmlClass="end-description-wrap" after="content" />
+
+		
+
+    </referenceContainer>
+<!-- 
+	    <move element="category.description" destination="title.content" after="-"/>
+	    <move element="category.cms" destination="end.description" before="-"/>
+	    <move element="page.main.title" destination="title.content" before="-"/>
+	    <move element="breadcrumbs" destination="breadcrumb.content" after="page.main.title"/>
+	    <move element="catalog.leftnav" destination="sidebar.additional" after="main.store.menu"/> -->
+
+
+
+
+		
+
+	    <!-- #REMOVES  -->
+
+	    <!-- remove Cat Image -->
+    	<referenceBlock name="category.image" remove="true" />
+	    <!-- Remove wishlist-->
+	    <referenceBlock name="wishlist_sidebar" remove="true" />
+	    <!-- Remove compare -->
+		<referenceBlock name="category.product.addto.compare" remove="true"/> 
+
+
+		<referenceBlock name="div.sidebar.additional" remove="true"/>
+
+		
+
+    </body>
+</page>
